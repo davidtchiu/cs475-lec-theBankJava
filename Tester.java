@@ -6,14 +6,14 @@ public class Tester {
     TheBank syncedBank = new TheBank();
 
     // start the threads
-    Thread[] customers = new Thread[cust_name.length];
-    for (int i = 0; i < cust_name.length; i++) {
+    Thread[] customers = new Thread[cust_names.length];
+    for (int i = 0; i < cust_names.length; i++) {
       customers[i] = new Thread(new Customer(cust_names[i], syncedBank));
       customers[i].start();
     }
 
     // join the customer threads
-    for (int i = 0; i < cust_name.length; i++) {
+    for (int i = 0; i < cust_names.length; i++) {
       try {
         customers[i].join();
       } catch (InterruptedException e) {
