@@ -1,25 +1,22 @@
 public class Tester {
-  private static final int NUM_THREADS = 3;
-  private static final String[] cust_names = {"Adam", "Brad", "America"};
+
+  private static final String[] cust_names = { "Adam", "Brad", "America" };
+
   public static void main(String[] args) {
     TheBank syncedBank = new TheBank();
 
-    // 3 customers
-    Thread[] customers = new Thread[NUM_THREADS];
-
     // start the threads
-    for (int i = 0; i < NUM_THREADS; i++) {
+    Thread[] customers = new Thread[cust_name.length];
+    for (int i = 0; i < cust_name.length; i++) {
       customers[i] = new Thread(new Customer(cust_names[i], syncedBank));
       customers[i].start();
     }
 
-    //join the customer threads
-    for (int i = 0; i < NUM_THREADS; i++) {
+    // join the customer threads
+    for (int i = 0; i < cust_name.length; i++) {
       try {
-       customers[i].join();
-      }
-      catch (InterruptedException e) {
-        e.printStackTrace();
+        customers[i].join();
+      } catch (InterruptedException e) {
       }
     }
     System.out.println("Done!");
